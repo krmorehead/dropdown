@@ -1,6 +1,7 @@
 angular.module("teacherPortal.Services", [])
 
 .factory("ApiGetter", function($http){
+
   return {
     getAssignments : function(params){
       console.log("getting assignments")
@@ -9,6 +10,8 @@ angular.module("teacherPortal.Services", [])
         url: assignmentUrl, 
         method: "GET",
         params: params || {} 
+      }).then(function(response){
+        return response.data
       })
     },
 
@@ -19,8 +22,8 @@ angular.module("teacherPortal.Services", [])
         url: assignmentSubmissionUrl,
         method: "GET",
         params: params || {}
-      }).then(function(data){
-        console.log(data)
+      }).then(function(response){
+        return response.data
       })
     }
   }

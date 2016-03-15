@@ -1,1 +1,21 @@
-<p>Hi</p>
+
+<div flex-xs flex-gt-xs="30" layout="column">
+  <md-card>
+    <h3 class = "md-headline">Assignments</h3>
+    <md-card ng-repeat = "assignment in assignments">
+    <!-- <md-card-title>
+      <md-card-title-text>
+      </md-card-title-text>
+      <md-card-title-media>
+        <div class="md-media-sm card-media"></div>
+      </md-card-title-media>
+    </md-card-title> -->
+    <md-card-content>
+      <p>{{assignment.description}}</p>
+      <p class = "dueDate">{{assignment.due_at}}</p>
+    </md-card-content>
+<!--     <md-card-actions layout="row" layout-align="end center">
+    </md-card-actions> -->
+    </md-card>
+  </md-card>
+</div>
