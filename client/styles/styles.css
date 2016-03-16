@@ -6,3 +6,12 @@ p.dueDate{
   text-align: right;
   font-size: .7em
 }
+
+md-card.assignment.selected, md-card.assignment:hover {
+ background-color: #5cb85c;
+}
+
+.md-headline.noAssignment{
+  text-align: center;
+  padding-top:25%;
+}

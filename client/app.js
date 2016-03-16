@@ -1,7 +1,8 @@
 angular.module("teacherPortal",[
   "teacherPortal.HomepageController",
   "teacherPortal.Services",
-  "ui.router"
+  "ui.router",
+  "angularMoment"
 ])
 
 .config(function($stateProvider, $urlRouterProvider){
