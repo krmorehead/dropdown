@@ -24,9 +24,20 @@
   <div flex-xs flex-gt-xs="75" layout="column">
     <md-card flex = "90">
       <md-content>
-<!--         <div ng-hide = "selected">
+        <div ng-hide = "selected">
            <h2 class = "md-headline noAssignment">Select an assignment</h2>
-        </div> -->
+        </div>
+        <div ng-show = "selected">
+          <md-card>
+            <md-card-content>
+              <h3>{{assignment.title}}
+                <span class = "dueDate">Due: <mydate>{{assignment.due_at | date:'EEE MMM dd h:00a'}}</mydate>
+                </span>
+              </h3>
+              <p><strong>Description:</strong> {{assignment.description}}</p>
+            </md-card-content>
+          </md-card>
+        </div>
         <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
           <md-tab ng-disabled="tab.disabled" label="tab1">
             <div class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">

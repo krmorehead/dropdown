@@ -14,4 +14,7 @@ angular.module("teacherPortal",[
     templateUrl: "homepage/homepage.html",
     controller: "HomepageController"
   })
+  .state("homepage.assignment", {
+    url:":id",
+  })
 })

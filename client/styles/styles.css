@@ -2,8 +2,9 @@ h3.md-headline{
   text-align: center;
 }
 
-p.dueDate{
+p.dueDate, span.dueDate{
   text-align: right;
+  float:right;
   font-size: .7em
 }
 
