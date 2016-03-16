@@ -16,3 +16,7 @@ md-card.assignment.selected, md-card.assignment:hover {
   text-align: center;
   padding-top:25%;
 }
+
+.md-card-image.avatar{
+  display:inline-block;
+}

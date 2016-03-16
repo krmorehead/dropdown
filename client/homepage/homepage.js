@@ -6,6 +6,7 @@ angular.module("teacherPortal.HomepageController",[])
   $scope.selected = Number($state.params.id) || false;
   //the assignment selected will be injected into the view
   $scope.assignment = {};
+  $scope.displaySubmissions = false;
 
 
   //gets all assignments, updates scope so the page renders, then gets all submissions for each assignment. Should update to paginate later.
@@ -29,6 +30,10 @@ angular.module("teacherPortal.HomepageController",[])
   $scope.toggleSelected = function(assignment){
     $scope.assignment = assignment
     $state.transitionTo("homepage.assignment", {id:assignment.id})
+  }
+
+  $scope.toggleDisplay = function(){
+    $scope.displaySubmissions = !$scope.displaySubmissions
   }
 
   var updateScope = function(assignmentId){
