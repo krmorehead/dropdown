@@ -31,7 +31,15 @@ angular.module("teacherPortal.Services", [])
         method: "GET",
         params: params || {}
       }).then(function(response){
-        submissions[assignmentId] = response.data
+        console.log(response.data, assignmentId)
+        //since the assignmentId parameter does not currently work and instead the back end returns an object with all submissions
+        for(var i = 0; i <response.data.length; i++){
+          var submission = response.data[i]
+          submissions[submission.assignment_id] = submissions[submission.assignment_id] || []
+          submissions[submission.assignment_id].push(submission)
+        }
+
+        // submissions[assignmentId] = response.data
       })
     },
 
@@ -41,6 +49,7 @@ angular.module("teacherPortal.Services", [])
     },
 
     submissions : function(assignmentId){
+      console.log("all submissions", submissions)
       return submissions[assignmentId]
     }
   }

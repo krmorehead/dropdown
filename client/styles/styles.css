@@ -18,5 +18,11 @@ md-card.assignment.selected, md-card.assignment:hover {
 }
 
 .md-card-image.avatar{
+  float: left;
+  padding: 10px;
+}
+
+.expand{
+  float:right;
   display:inline-block;
 }

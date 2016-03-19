@@ -19,13 +19,13 @@
            <h2 class = "md-headline noAssignment">Select an assignment</h2>
         </div>
        
-        <div >
+        <div ng-show = "selected">
           <md-tabs md-dynamic-height md-border-bottom>
             <md-tab label="Description">
               <md-card>
                 <md-card-content>
                   <h3>{{assignment.title}}
-                    <span class = "dueDate">Due: <mydate>{{assignment.due_at | date:'EEE MMM dd h:00a'}}</mydate>
+                    <span class = "date">Due: <mydate>{{assignment.due_at | date:'EEE MMM dd h:00a'}}</mydate>
                     </span>
                   </h3>
                   <p><strong>Description:</strong> {{assignment.description}}</p>
@@ -35,22 +35,14 @@
             <md-tab label="Submissions">
               <md-card content class="md-padding" ng-repeat = "submission in submissions">
                 <div>
-                  <div flex-xs flex-gt-xs="20" layout="column">
-                    <img ng-src="{{submission.creator.avatars.small}}" class="md-card-image avatar" alt="Washed Out"/>
+                    <img flex = "10" class = "expand" ng-click = "expand = !expand" src="../resources/arrow-down-b.png"/>
+                    <img ng-src="{{submission.creator.avatars.small}}" class="md-card-image avatar" alt="Washed Out"/ flex = "15">
                       <!-- <div class="md-media-sm card-media">"{{submission.creator.avatars.small}}" -->
-                  </div>
-                  <div flex-xs flex-gt-xs="70" layout="column">
 
-                    <p>
-                      {{submission.creator.first_name}} 
-                    </p>
-                    <p>
-                      {{submission.creator.last_name}}
-                    </p>
-                  </div>
-
+                    <p>{{submission.creator.first_name}} {{submission.creator.last_name}}</p>
+                    <p class = "date">Turned in: <mydate>{{submission.submitted_at | date:'EEE MMM dd h:00a'}}</mydate></p>
                 </div>
-                <p ng-show = "expand" >{{submission.content}}</p>
+                <p ng-show = "expand" class = "slide">{{submission.content}}</p>
 
               </md-card content>
             </md-tab>
