@@ -35,8 +35,9 @@ angular.module("teacherPortal.Services", [])
         //since the assignmentId parameter does not currently work and instead the back end returns an object with all submissions
         for(var i = 0; i <response.data.length; i++){
           var submission = response.data[i]
-          submissions[submission.assignment_id] = submissions[submission.assignment_id] || []
-          submissions[submission.assignment_id].push(submission)
+          submissions[submission.assignment_id] = submissions[submission.assignment_id] || {}
+          //the api currently returns multiple copies of the same thing, this forces there to only be one submission per student per assignment, if there is a desire to have multiple submissions this will need to be changed
+          submissions[submission.assignment_id][submission.creator.id] = submission
         }
 
         // submissions[assignmentId] = response.data
@@ -51,6 +52,11 @@ angular.module("teacherPortal.Services", [])
     submissions : function(assignmentId){
       console.log("all submissions", submissions)
       return submissions[assignmentId]
+    },
+
+    //allows new assignments to be added on the front-end
+    addAssignment : function(assignment){
+      assignments.unshift(assignment)
     }
   }
 })

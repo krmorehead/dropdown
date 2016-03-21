@@ -1,6 +1,6 @@
 angular.module("teacherPortal.HomepageController",[])
 
-.controller("HomepageController", function($scope, $state, $rootScope, AssignmentService){
+.controller("HomepageController", function($scope, $state, $rootScope, $mdDialog, AssignmentService){
   $scope.assignments = [];
   //the id of the selected assignment which can be used to query the service for data
   $scope.selected = Number($state.params.id) || false;
@@ -38,6 +38,8 @@ angular.module("teacherPortal.HomepageController",[])
   })
   // transitions the state after adding the assignment to the scope. Adds assignment first for a very minor optimization.
   $scope.toggleSelected = function(assignment){
+    $scope.assignment.isSelected = false
+    assignment.isSelected = true
     // $scope.assignment = assignment
     // updateSubmissions(assignment.id)
     $state.transitionTo("homepage.assignment", {id:assignment.id})
@@ -45,6 +47,15 @@ angular.module("teacherPortal.HomepageController",[])
 
   $scope.toggleDisplay = function(){
     $scope.displaySubmissions = !$scope.displaySubmissions
+  }
+
+  $scope.addAssignment = function(){
+    $mdDialog.show({
+      templateUrl: '../partials/addAssignment.html',
+      controller: addAssignmentController
+    })
+    .then(function(clickedItem) {
+    })
   }
 
   var updateScope = function(assignmentId){
@@ -66,6 +77,21 @@ angular.module("teacherPortal.HomepageController",[])
     if($scope.selected){
       $scope.submissions = AssignmentService.submissions(assignmentId)
       console.log($scope.submissions, "submissions")
+    }
+  }
+
+  var addAssignmentController = function($scope, $mdDialog){
+
+    //the newAssignment is defined on the view
+    $scope.submitAssignment = function(){
+      $scope.newAssignment.id = Math.ceil(Math.random() * 99999999)
+      
+      AssignmentService.addAssignment($scope.newAssignment)
+      $mdDialog.hide()
+    }
+
+    $scope.closePartial = function(){
+      $mdDialog.hide()
     }
   }
 

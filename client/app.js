@@ -3,7 +3,8 @@ angular.module("teacherPortal",[
   "teacherPortal.Services",
   "ui.router",
   "angularMoment",
-  'ngMaterial'
+  'ngMaterial',
+  'ngMessages'
 ])
 
 .config(function($stateProvider, $urlRouterProvider){
