@@ -1,54 +1,61 @@
-<md-content class="md-padding background" layout-xs="column" layout="row">
+<div class = "background md-padding">
+<!-- The left hand column, showing the assignments that can be selected -->
+<md-content class="background" layout-xs="column" layout="row">
   <div flex-xs flex-gt-xs="25" layout="column" >
-    <md-card flex = "90" class = "second-layer">
-      <h3 class = "md-headline">Assignments 
-        <img flex = "15" class = "plus" src = "../resources/plus.png" ng-click = "addAssignment()">
 
-      </h3>
-      <md-card class = "assignment text-layer" ng-repeat = "assignment in assignments" ng-click = "toggleSelected(assignment)" ng-class = "{selected:assignment.isSelected}">
-      
-      <md-card-content>
-        <p class = "assignmentTitle">{{assignment.title}}</p>
-        <p class = "dueDate">Due: <mydate>{{assignment.due_at | date:'MMM dd'}}</mydate>
-        </p>
-      </md-card-content>
-      </md-card>
+    <md-card flex = "90" class = "second-layer">
+      <md-content class = "second-layer">
+
+        <h3 class = "md-headline">Assignments 
+          <img flex = "15" class = "plus" src = "../resources/plus.png" ng-click = "addAssignment()">
+        </h3>
+        <!-- The card for each assignment -->
+        <md-card class = "assignment text-layer" ng-repeat = "assignment in assignments" ng-click = "toggleSelected(assignment)" ng-class = "{selected:assignment.isSelected}">
+        <md-card-content>
+          <p class = "assignmentTitle">{{assignment.title}}</p>
+          <p class = "dueDate">Due: <mydate>{{assignment.due_at | date:'MMMM dd yyyy'}}</mydate>
+          </p>
+        </md-card-content>
+        </md-card>
+      </md-content>
     </md-card>
   </div>
+
+  <!-- The right hand column, displaying descriptions and submissions -->
 
   <div flex-xs flex-gt-xs="75" layout="column" >
     <md-card flex = "90" class = "second-layer">
       <md-content class = "second-layer">
+        <!-- Default message is no assignment is selected -->
         <div ng-hide = "selected">
            <h2 class = "md-headline noAssignment">Select an assignment</h2>
         </div>
-       
+        
+        <!-- The selected assignment description -->
         <div ng-show = "selected">
           <md-tabs md-dynamic-height md-border-bottom>
             <md-tab label="Description">
               <md-card>
                 <md-card-content class = "text-layer">
                   <h3>{{assignment.title}}
-                    <span class = "dueDate">Due: <mydate>{{assignment.due_at | date:'MMM dd'}}</mydate>
+                    <span class = "dueDate">Due: <mydate>{{assignment.due_at | date:'MMMM dd yyyy'}}</mydate>
                     </span>
                   </h3>
                   <p><strong>Description:</strong> {{assignment.description}}</p>
                 </md-card-content>
               </md-card>
             </md-tab>
+          <!-- The selected assignment submissions -->
             <md-tab label="Submissions">
               <md-card content class="md-padding text-layer" ng-repeat = "submission in submissions">
                 <div>
                     <img flex = "10" class = "expand" ng-hide = "expand" ng-click = "expand = !expand" src="../resources/arrow-down-b.png"/>
                     <img flex = "10" class = "expand" ng-show = "expand" ng-click = "expand = !expand" src="../resources/arrow-up-b.png"/>
                     <img ng-src="{{submission.creator.avatars.small}}" class="md-card-image avatar" alt="Washed Out"/ flex = "15">
-                      <!-- <div class="md-media-sm card-media">"{{submission.creator.avatars.small}}" -->
-
                     <p>{{submission.creator.first_name}} {{submission.creator.last_name}}</p>
-                    <p class = "date">Turned in: <mydate>{{submission.submitted_at | date:'MMM dd h:00a'}}</mydate></p>
+                    <p class = "date">Turned in: <mydate>{{submission.submitted_at | date:'MMMM dd yyyy h:00a'}}</mydate></p>
                 </div>
-                <p ng-show = "expand" class = "slide">{{submission.content}}</p>
-
+                <p ng-show = "expand">{{submission.content}}</p>
               </md-card content>
             </md-tab>
           </md-tabs>
@@ -58,4 +65,6 @@
   </div>
 
 </md-content>
+  <p class = "documentationLink" ui-sref = "homepageDoc"><strong>Check out the documentation</strong></p>
 
+</div>

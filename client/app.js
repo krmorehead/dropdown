@@ -8,15 +8,28 @@ angular.module("teacherPortal",[
 ])
 
 .config(function($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/homepage");
 
   $stateProvider 
   .state("homepage" , {
-    url:"/",
+    url:"/homepage",
     templateUrl: "homepage/homepage.html",
     controller: "HomepageController"
   })
   .state("homepage.assignment", {
-    url:":id",
+    url:"/:id",
+  })
+
+  .state("homepageDoc",{
+    url:"/homepageDoc",
+    templateUrl: "docs/homepage.html"
+  })
+  .state("app",{
+    url:"/app",
+    templateUrl: "docs/app.html"
+  })
+  .state("services",{
+    url:"/services",
+    templateUrl: "docs/services.html"
   })
 })

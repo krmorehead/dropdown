@@ -1,6 +1,6 @@
 angular.module("teacherPortal.Services", [])
-
-.factory("AssignmentService", function($http){
+// <h3>The assignment Service</h3>
+.factory("AssignmentFactory", function($http){
   var assignments = []
   /*Storing submissions in an object by assignment ID for faster access later. An example object
     {
@@ -31,7 +31,6 @@ angular.module("teacherPortal.Services", [])
         method: "GET",
         params: params || {}
       }).then(function(response){
-        console.log(response.data, assignmentId)
         //since the assignmentId parameter does not currently work and instead the back end returns an object with all submissions
         for(var i = 0; i <response.data.length; i++){
           var submission = response.data[i]
@@ -40,7 +39,8 @@ angular.module("teacherPortal.Services", [])
           submissions[submission.assignment_id][submission.creator.id] = submission
         }
 
-        // submissions[assignmentId] = response.data
+        //if the get assignmentId parameter beggins working on the back end the for loop above can be removed and the code below can be uncommented. This will be more efficient time wise on the front end.
+        // <p>submissions[assignmentId] = response.data</p>
       })
     },
 
@@ -50,7 +50,6 @@ angular.module("teacherPortal.Services", [])
     },
 
     submissions : function(assignmentId){
-      console.log("all submissions", submissions)
       return submissions[assignmentId]
     },
 
