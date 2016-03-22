@@ -39,8 +39,6 @@ angular.module("teacherPortal.HomepageController",[])
 
   // transitions the state to the new assignment. Sets the new assignment to "selected".
   $scope.toggleSelected = function(assignment){
-    $scope.assignment.isSelected = false
-    assignment.isSelected = true
     $state.transitionTo("homepage.assignment", {id:assignment.id})
   }
 
@@ -95,12 +93,13 @@ angular.module("teacherPortal.HomepageController",[])
   }
 
   //whatches for state changes and updates the scoped items based on the change. This allows for navigation using the history option, and allows for transition of state rather than href changes.
-  $rootScope.$on("$stateChangeSuccess", function(ev, to, toParams, from, fromParams){
+  $rootScope.$on("$stateChangeStart", function(ev, toState, toParams, fromState, fromParams){
+    $scope.assignment.isSelected = false
     var toAssignmentId = Number(toParams.id)
     $scope.selected = toAssignmentId
     if($scope.assignment.id !== toAssignmentId){
-      console.log("updating")
       updateScope(toAssignmentId)
+      $scope.assignment.isSelected = true
     }
   })
 })
