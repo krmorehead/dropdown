@@ -73,8 +73,6 @@ angular.module("teacherPortal.HomepageController",[])
       templateUrl: '../partials/addAssignment.html',
       controller: addAssignmentController
     })
-    .then(function(clickedItem) {
-    })
   }
 
   //the controller for the new assignment modal
@@ -94,12 +92,11 @@ angular.module("teacherPortal.HomepageController",[])
 
   //whatches for state changes and updates the scoped items based on the change. This allows for navigation using the history option, and allows for transition of state rather than href changes.
   $rootScope.$on("$stateChangeStart", function(ev, toState, toParams, fromState, fromParams){
-    $scope.assignment.isSelected = false
     var toAssignmentId = Number(toParams.id)
     $scope.selected = toAssignmentId
     if($scope.assignment.id !== toAssignmentId){
+      $scope.assignment.isSelected = false
       updateScope(toAssignmentId)
-      $scope.assignment.isSelected = true
     }
   })
 })

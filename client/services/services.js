@@ -2,11 +2,11 @@ angular.module("teacherPortal.Services", [])
 // <h3>The assignment Service</h3>
 .factory("AssignmentFactory", function($http){
   var assignments = []
-  /*Storing submissions in an object by assignment ID for faster access later. An example object
-    {
-      24800159:[submission,submission]
-    }*/
-  
+
+  // Storing submissions in an object by assignment ID for faster access later. An example object
+    // <p>{                                  </p>
+    // <p>  24800159:[submission,submission] </p>
+    // <p>}                                  </p>
   var submissions = {}
 
   return {
