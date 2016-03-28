@@ -1,35 +1,40 @@
-angular.module("teacherPortal",[
-  "teacherPortal.HomepageController",
-  "teacherPortal.Services",
-  "ui.router",
-  "angularMoment",
-  'ngMaterial',
-  'ngMessages'
+angular.module("dropdown",[
 ])
 
-.config(function($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.otherwise("/homepage");
+.controller("dropdownController", function($scope){
+  $scope.searchQuery = ""
+  $scope.searchOptions;
+  $scope.selected;
 
-  $stateProvider 
-  .state("homepage" , {
-    url:"/homepage",
-    templateUrl: "homepage/homepage.html",
-    controller: "HomepageController"
-  })
-  .state("homepage.assignment", {
-    url:"/:id",
-  })
+  $scope.displayOptions = function(){
+    if($scope.searchQuery.length){
+      $scope.searchOptions = [{name:"Games"}, {name:"Hobbies"}, {name:"Office supplies"}]
+    }
+  }
 
-  .state("homepageDoc",{
-    url:"/homepageDoc",
-    templateUrl: "docs/homepage.html"
-  })
-  .state("app",{
-    url:"/app",
-    templateUrl: "docs/app.html"
-  })
-  .state("services",{
-    url:"/services",
-    templateUrl: "docs/services.html"
-  })
+  $scope.select = function(index){
+    if($scope.searchOptions[$scope.selected]) {
+      $scope.searchOptions[$scope.selected].selected = false;
+    }
+    $scope.selected = index
+    $scope.searchOptions[index].selected = true;
+  }
+
+  $scope.changeSelected = function(){
+    if($scope.searchOptions){
+      if(event.keyCode === 38) {
+        var newSelect = $scope.selected - 1 || 0
+        if(newSelect < 0){
+          newSelect = 0
+        }
+        $scope.select(newSelect)
+      } else if (event.keyCode === 40) {
+        var newSelect = $scope.selected + 1 || 0
+        if(newSelect >= $scope.searchOptions.length){
+          newSelect = $scope.searchOptions.length - 1
+        }
+        $scope.select(newSelect)
+      }
+    }
+  }
 })

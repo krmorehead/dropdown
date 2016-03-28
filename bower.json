@@ -1,6 +1,6 @@
 {
-  "name": "teacher_portal",
-  "description": "a portal for teacher to check on students assignments",
+  "name": "dropdown",
+  "description": "",
   "main": "",
   "moduleType": [],
   "authors": [
@@ -18,8 +18,5 @@
   ],
   "dependencies": {
     "angular": "^1.5.0",
-    "angular-ui-router": "ui-router#^0.2.18",
-    "angular-material": "^1.0.6",
-    "angular-moment": "^0.10.3"
   }
 }

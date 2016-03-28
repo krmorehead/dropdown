@@ -1,81 +1,8 @@
-.noBackground{
-  background-color: white;
+.box{
+  border: 1px solid gray;
+  width:40vh;
 }
 
-.background{
-  background-color: rgb(200, 200, 200);
-  min-height: 90vh;
-}
-
-.second-layer{
-  background-color: rgb(220, 220, 220)
-}
-
-.text-layer{
-  background-color: rgb(234, 234, 234)
-
-}
-
-.marginless{
-  margin:0px;
-}
-
-h3.md-headline{
-  text-align: center;
-}
-
-p.dueDate, span.dueDate{
-  text-align: right;
-  float:right;
-  font-size: .7em
-}
-
-md-card.assignment.selected, md-card.assignment:hover {
- background-color: #5cb85c;
-}
-
-.md-headline.noAssignment{
-  text-align: center;
-  padding-top:25%;
-}
-
-.md-card-image.avatar{
-  float: left;
-  padding: 10px;
-}
-
-.med{
-  max-width: 80px
-}
-
-.plus{
-  float:right;
-  margin-top: -2%;
-  margin-right: 5px;
-  border-radius: 5px;
-}
-
-.plus:hover{
-  background-color: rgb(200, 200, 200);
-}
-
-.expand{
-  float:right;
-  display:inline-block;
-}
-
-.md-tab.ng-scope.ng-isolate-scope.md-ink-ripple.md-active{
-  color:black !important;
-}
-
-md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
-    background-color:#5cb85c !important;
-}
-
-.documentationLink{
-  text-align: center;
-}
-
-.documentationLink:hover{
-  color:blue;
+.selected{
+  background-color: gray;
 }
